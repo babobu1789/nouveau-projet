@@ -1,0 +1,166 @@
+
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La prise d'habit et la confection des costumes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #eae7e2;
+    }
+    .section {
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 900px;
+      margin: auto;
+    }
+    h1 {
+      color: #8b7d7b;
+      font-weight: bold;
+      font-size: 2.5em;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      cursor: pointer;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .small-img {
+      width: 50%;
+      max-width: 300px;
+    }
+    .controls {
+      margin-top: 10px;
+    }
+    .wave {
+      width: 100%;
+      height: 60px;
+      display: none;
+      position: relative;
+      background-color: #ecf0f1;
+      overflow: hidden;
+      border-radius: 4px;
+    }
+    .bar {
+      position: absolute;
+      bottom: 0;
+      width: 3px;
+      background-color: #3498db;
+      animation: waveAnim 1s infinite ease-in-out;
+    }
+    @keyframes waveAnim {
+      0% { transform: scaleY(0.3); }
+      50% { transform: scaleY(1); }
+      100% { transform: scaleY(0.3); }
+    }
+    .next-button,
+    .prev-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #b8afa2;
+      color: #2c2c2c;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: bold;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    .next-button:hover,
+    .prev-button:hover {
+      background-color: #a89e91;
+      transform: scale(1.05);
+    }
+    .next-button::after {
+      content: ' ➔';
+    }
+    .prev-button::before {
+      content: '⬅ ';
+    }
+    .large-text {
+      font-size: 1.4em;
+      color: #2c2c2c;
+    }
+    .button-container {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="section">
+    <h1>Cérémonie de prise d'habit et confection des costumes</h1>
+    <p class="large-text"><strong>Témoignage de Soeur Jeanne Choiselat</strong></p>
+    <p class="large-text">3 minutes 42 secondes</p>
+    <p class="large-text">Soeur Jeanne Choiselat (1901-2008) était au noviciat dans les années 1930. Elle évoque dans cet extrait le 'vieux costume' de postulante, la cérémonie de prise d'habit et la confection des habits par la couturière.</p>
+    <img src="images/Choiselat_Jeanne.jpg" class="small-img" onclick="toggleAudio('audio5', 'wave5')">
+    <div class="controls">
+      <button onclick="playAudio('audio5', 'wave5')">▶ Lecture</button>
+      <button onclick="pauseAudio('audio5', 'wave5')">⏸ Pause</button>
+    </div>
+    <div id="wave5" class="wave"></div>
+    <audio id="audio5" src="audio/Choiselat.mp3"></audio>
+    <div class="button-container">
+      <a href="page4_ipad9_adapted.html" class="prev-button">Page précédente</a>
+      <a href="page6_ipad9_adapted.html" class="next-button">Continuer la visite</a>
+    </div>
+  </div>
+
+  <script>
+    function createWaveBars(containerId) {
+      const container = document.getElementById(containerId);
+      container.innerHTML = '';
+      for (let i = 0; i < 100; i++) {
+        const bar = document.createElement('div');
+        bar.classList.add('bar');
+        bar.style.left = (i * 4) + 'px';
+        bar.style.height = (Math.random() * 60) + 'px';
+        bar.style.animationDelay = (Math.random()) + 's';
+        container.appendChild(bar);
+      }
+    }
+
+    function playAudio(audioId, waveId) {
+      const audio = document.getElementById(audioId);
+      const wave = document.getElementById(waveId);
+      audio.play();
+      wave.style.display = 'block';
+      createWaveBars(waveId);
+    }
+
+    function pauseAudio(audioId, waveId) {
+      const audio = document.getElementById(audioId);
+      const wave = document.getElementById(waveId);
+      audio.pause();
+      wave.style.display = 'none';
+    }
+
+    function toggleAudio(audioId, waveId) {
+      const audio = document.getElementById(audioId);
+      const wave = document.getElementById(waveId);
+      if (audio.paused) {
+        audio.play();
+        wave.style.display = 'block';
+        createWaveBars(waveId);
+      } else {
+        audio.pause();
+        wave.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>

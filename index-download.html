@@ -1,0 +1,89 @@
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta http-equiv="refresh" content="20;url=page1_ipad9_adapted.html">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Présentation</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #eae7e2;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2vh 2vw;
+    }
+
+    .container {
+      max-width: 800px;
+      width: 100%;
+      padding: 2em;
+    }
+
+    .title {
+      font-size: 2.5rem;
+      color: #8b7d7b;
+      margin-bottom: 2em;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: #8b7d7b;
+      margin-top: 1em;
+      margin-bottom: 1.5em;
+    }
+
+    .start-button {
+      display: inline-block;
+      margin-top: 2em;
+      padding: 1em 2em;
+      font-size: 1rem;
+      color: #2c2c2c;
+      background-color: #b8afa2;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .start-button:hover {
+      background-color: #a89e91;
+      transform: scale(1.05);
+    }
+
+    /* Adaptation pour les écrans ≤ 850px (iPad inclus) */
+    @media (max-width: 850px) {
+      .title {
+        font-size: 2rem;
+      }
+
+      .subtitle {
+        font-size: 1rem;
+      }
+
+      .start-button {
+        font-size: 1rem;
+        padding: 0.8em 1.5em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="title">Des sœurs grises témoignent</div>
+    <div class="subtitle">En 2001, le Service des archives des Sœurs Grises de Saint-Boniface a développé un projet d’histoire orale avec des religieuses du Manitoba.</div>
+    <div class="subtitle">De ces longs entretiens, nous avons extrait dix passages, où chacune partage, à sa manière, sa relation avec les habits qu'elle a dû porter dans la communauté.</div>
+    <div class="subtitle">Bonne écoute!</div>
+    <div class="subtitle">Durée approximative: 20 minutes</div>
+    <a href="page1_ipad9_adapted.html" class="start-button">Commencer la visite</a>
+  </div>
+</body>
+</html>

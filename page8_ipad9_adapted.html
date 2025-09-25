@@ -1,0 +1,179 @@
+
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vatican II et le changement de costumes d'infirmières</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #eae7e2;
+    }
+    .section {
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    h1 {
+      color: #8b7d7b;
+      font-weight: bold;
+      font-size: 36px;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      cursor: pointer;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .small-img {
+      width: 40%;
+    }
+    .controls {
+      margin-top: 10px;
+    }
+    .wave {
+      width: 100%;
+      height: 60px;
+      display: none;
+      position: relative;
+      background-color: #ecf0f1;
+      overflow: hidden;
+      border-radius: 4px;
+    }
+    .bar {
+      position: absolute;
+      bottom: 0;
+      width: 3px;
+      background-color: #3498db;
+      animation: waveAnim 1s infinite ease-in-out;
+    }
+    @keyframes waveAnim {
+      0% { transform: scaleY(0.3); }
+      50% { transform: scaleY(1); }
+      100% { transform: scaleY(0.3); }
+    }
+    .next-button,
+    .prev-button {
+      display: inline-block;
+      padding: 14px 24px;
+      background-color: #b8afa2;
+      color: #2c2c2c;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 18px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    .next-button:hover,
+    .prev-button:hover {
+      background-color: #a89e91;
+      transform: scale(1.05);
+    }
+    .next-button::after {
+      content: ' ➔';
+    }
+    .prev-button::before {
+      content: '⬅ ';
+    }
+    .large-text {
+      font-size: 20px;
+      color: #2c2c2c;
+    }
+    .button-container {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 28px;
+      }
+      .large-text {
+        font-size: 18px;
+      }
+      .small-img {
+        width: 60%;
+      }
+      .button-container {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="section">
+    <h1>Vatican II et le changement de costumes d'infirmières</h1>
+    <p class="large-text"><strong>Témoignage de Soeur Rollande Lagassé</strong></p>
+    <p class="large-text">2 minutes et 21 secondes</p>
+    <p class="large-text">Soeur Rollande Lagassé (1934-2012) évoque dans cet extrait le changement dans le costume d'infirmière à la suite de Vatican II. Devenue professe au début des années 1960, elle travaillait alors comme étudiante en sciences infirmières à l'Hôpital de Saint-Boniface.</p>
+    <img src="images/Lagasse.jpg" class="small-img" onclick="toggleAudio('audio8', 'wave8')">
+    <div class="controls">
+      <button onclick="playAudio('audio8', 'wave8')">▶ Lecture</button>
+      <button onclick="pauseAudio('audio8', 'wave8')">⏸ Pause</button>
+    </div>
+    <div id="wave8" class="wave"></div>
+    <audio id="audio8" src="audio/Lagasse-infirmieres.mp3"></audio>
+    <div class="button-container">
+      <a href="page7_ipad9_adapted.html" class="prev-button">Page précédente</a>
+      <a href="page9_ipad9_adapted.html" class="next-button">Continuer la visite</a>
+    </div>
+  </div>
+
+  <script>
+    function createWaveBars(containerId) {
+      const container = document.getElementById(containerId);
+      container.innerHTML = '';
+      for (let i = 0; i < 100; i++) {
+        const bar = document.createElement('div');
+        bar.classList.add('bar');
+        bar.style.left = (i * 4) + 'px';
+        bar.style.height = (Math.random() * 60) + 'px';
+        bar.style.animationDelay = (Math.random()) + 's';
+        container.appendChild(bar);
+      }
+    }
+
+    function playAudio(audioId, waveId) {
+      const audio = document.getElementById(audioId);
+      const wave = document.getElementById(waveId);
+      audio.play();
+      wave.style.display = 'block';
+      createWaveBars(waveId);
+    }
+
+    function pauseAudio(audioId, waveId) {
+      const audio = document.getElementById(audioId);
+      const wave = document.getElementById(waveId);
+      audio.pause();
+      wave.style.display = 'none';
+    }
+
+    function toggleAudio(audioId, waveId) {
+      const audio = document.getElementById(audioId);
+      const wave = document.getElementById(waveId);
+      if (audio.paused) {
+        audio.play();
+        wave.style.display = 'block';
+        createWaveBars(waveId);
+      } else {
+        audio.pause();
+        wave.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>

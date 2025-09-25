@@ -1,0 +1,156 @@
+
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La révolution du Concile Vatican II</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #eae7e2;
+    }
+    .section {
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 900px;
+      margin: auto;
+    }
+    h1 {
+      color: #8b7d7b;
+      font-weight: bold;
+      font-size: 2.5em;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      cursor: pointer;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .small-img {
+      width: 50%;
+      max-width: 300px;
+    }
+    .controls {
+      margin-top: 10px;
+    }
+    .wave {
+      width: 100%;
+      height: 60px;
+      display: none;
+      position: relative;
+      background-color: #ecf0f1;
+      overflow: hidden;
+      border-radius: 4px;
+    }
+    .bar {
+      position: absolute;
+      bottom: 0;
+      width: 3px;
+      background-color: #3498db;
+      animation: waveAnim 1s infinite ease-in-out;
+    }
+    @keyframes waveAnim {
+      0% { transform: scaleY(0.3); }
+      50% { transform: scaleY(1); }
+      100% { transform: scaleY(0.3); }
+    }
+    .next-button, .prev-button {
+      margin-top: 30px;
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #b8afa2;
+      color: #2c2c2c;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: bold;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    .next-button:hover, .prev-button:hover {
+      background-color: #a89e91;
+      transform: scale(1.05);
+    }
+    .next-button::after {
+      content: ' ➔';
+    }
+    .prev-button::before {
+      content: '⬅ ';
+    }
+    .large-text {
+      font-size: 1.4em;
+      color: #2c2c2c;
+    }
+  </style>
+</head>
+<body>
+  <div class="section">
+    <h1>La révolution de Vatican II...</h1>
+    <p class="large-text"><strong>Témoignage de Soeur Marie-Ange Audette</strong></p>
+    <p class="large-text">5 minutes 54 secondes</p>
+    <p class="large-text">Soeur Marie-Ange Audette (1925-2007) a été missionnaire au Brésil durant le Concile Vatican II (1962-1965). Elle évoque dans cet extrait comment a été vécu différemment le changement de costume dans la congrégation, au Brésil et au Canada.</p>
+    <img src="images/Audette.jpg" class="small-img" onclick="toggleAudio('audio4', 'wave4')">
+    <div class="controls">
+      <button onclick="playAudio('audio4', 'wave4')">▶ Lecture</button>
+      <button onclick="pauseAudio('audio4', 'wave4')">⏸ Pause</button>
+    </div>
+    <div id="wave4" class="wave"></div>
+    <audio id="audio4" src="audio/Audette-Bresil.mp3"></audio>
+    <a href="page3_ipad9_adapted.html" class="prev-button">Page précédente</a>
+    <a href="page5_ipad9_adapted.html" class="next-button">Continuer la visite</a>
+  </div>
+
+  <script>
+    function createWaveBars(containerId) {
+      const container = document.getElementById(containerId);
+      container.innerHTML = '';
+      for (let i = 0; i < 100; i++) {
+        const bar = document.createElement('div');
+        bar.classList.add('bar');
+        bar.style.left = (i * 4) + 'px';
+        bar.style.height = (Math.random() * 60) + 'px';
+        bar.style.animationDelay = (Math.random()) + 's';
+        container.appendChild(bar);
+      }
+    }
+
+    function playAudio(audioId, waveId) {
+      const audio = document.getElementById(audioId);
+      const wave = document.getElementById(waveId);
+      audio.play();
+      wave.style.display = 'block';
+      createWaveBars(waveId);
+    }
+
+    function pauseAudio(audioId, waveId) {
+      const audio = document.getElementById(audioId);
+      const wave = document.getElementById(waveId);
+      audio.pause();
+      wave.style.display = 'none';
+    }
+
+    function toggleAudio(audioId, waveId) {
+      const audio = document.getElementById(audioId);
+      const wave = document.getElementById(waveId);
+      if (audio.paused) {
+        audio.play();
+        wave.style.display = 'block';
+        createWaveBars(waveId);
+      } else {
+        audio.pause();
+        wave.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>
